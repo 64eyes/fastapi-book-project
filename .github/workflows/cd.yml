@@ -63,7 +63,7 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/fastapi-book-app:${{ github.sha }}
 
       - name: Copy docker-compose.yml to Server
-        uses: appleboy/scp-action@v1.2.0
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -72,7 +72,7 @@ jobs:
           target: "/home/ubuntu/fastapi-book-project"  # Adjust this path
 
       - name: Deploy to Server
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
