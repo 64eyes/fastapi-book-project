@@ -1,7 +1,6 @@
 version: '3.8'
 services:
   app:
-    image: 64eyes/fastapi-book-app:latest
     build: . # Optional: Build locally if image doesn't exist
     ports:
       - "8000:8000"
