@@ -17,8 +17,13 @@ jobs:
           
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
           pip install -r requirements.txt
           
       - name: Run tests
-        run: pytest -v
+        run: pytest -v --cov=app --cov-report=term-missing  # Add coverage checks
+
+      - name: Build Docker Image
+        run: docker build -t fastapi-app .
