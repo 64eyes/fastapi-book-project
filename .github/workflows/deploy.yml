@@ -20,8 +20,9 @@ jobs:
           script: |
             cd fastapi-book-project
             git pull origin main
-            git stash
+            git stash pop || true
             # Stop existing containers
-            docker-compose down || true
+            docker-compose down
+            docker system prune -f
             docker-compose up -d --build
             docker ps
